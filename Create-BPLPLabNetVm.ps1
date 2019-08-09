@@ -1,3 +1,22 @@
+<# 
+.SYNOPSIS 
+Script that will list the logon information of AD users. 
+ 
+.DESCRIPTION 
+This script will create a new Windows 10 Virtual Machine on Azure using an existing Azure subscription. 
+This script doen't contain any run control to avoid errors or pre-verifications to avoid errors. 
+You can edit the variables at the top of the screen to match your current enviroment. 
+If you encounter any issues, please delete the Resource Group NetLabMachines 
+(or the name that you choose to use) and start over.
+
+Author: Christian Aguilera
+Country: Chile
+Released Date: 09/08/2019
+
+.EXAMPLE
+.\Create-BPLPLabNetVm.ps1
+#>
+
 $VMLocalAdminUser = "NetLabAdmin"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString 'NETLAB_4dm1n_4cc3ss' -AsPlainText -Force
 $LocationName = "CentralUS"
@@ -23,3 +42,5 @@ $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -Computer
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10' -Skus '19h1-pro' -Version latest
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
+
+write-host "This ends the tasks, please check your vm on http://portal.azure.com" -ForegroundColor Green
