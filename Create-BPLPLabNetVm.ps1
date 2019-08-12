@@ -12,6 +12,7 @@ If you encounter any issues, please delete the Resource Group NetLabMachines
 Author: Christian Aguilera
 Country: Chile
 Released Date: 09/08/2019
+Origin: Base script is offered from the official Microsoft documentation at https://docs.microsoft.com 
 
 .DISCLAIMER
 The sample scripts are not supported under any Microsoft standard support program or service. 
@@ -25,9 +26,31 @@ interruption, loss of business information, or other pecuniary loss) arising out
 inability to use the sample scripts or documentation, even if Microsoft has been advised of the 
 possibility of such damages.
 
+.PREREQUISITES
+You need to run this script from a Powershell version of 5.1 or newer and .NET Framework of 4.7.2
+You can update your Powershell version from https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell  
+Install .NET Framework 4.7.2 or later from https://docs.microsoft.com/en-us/dotnet/framework/install
+
+To install the Azure Powershell module, you need to run the following command using a Powershell window with administrative privileges
+Install-Module -Name Az -AllowClobber -Scope CurrentUser
+
+To Connect to your Azure Subscription use the following command:
+1. Import the Azure Powershell module
+Import-Module az
+2.	Connect to your Azure subscription
+Connect-AzAccount
+3.	Obtain the list of your available Azure Subscriptions
+Get-AzSubscription
+5.	Select the right Subscription
+Set-AzContext -Subscription 'Your Azure Subscription'
+
+Note: In a future release this options will be included in this script.
 
 .EXAMPLE
+To run the script and create the Windows 10 Virtual Machine
+
 .\Create-BPLPLabNetVm.ps1
+
 #>
 
 $VMLocalAdminUser = "NetLabAdmin"
