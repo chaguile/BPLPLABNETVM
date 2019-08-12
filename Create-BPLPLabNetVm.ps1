@@ -37,11 +37,11 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 To Connect to your Azure Subscription use the following command:
 1. Import the Azure Powershell module
 Import-Module az
-2.	Connect to your Azure subscription
+2. Connect to your Azure subscription
 Connect-AzAccount
-3.	Obtain the list of your available Azure Subscriptions
+3. Obtain the list of your available Azure Subscriptions
 Get-AzSubscription
-5.	Select the right Subscription
+4. Select the right Subscription
 Set-AzContext -Subscription 'Your Azure Subscription'
 
 Note: In a future release this options will be included in this script.
